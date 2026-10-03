@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehul Kumar | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0a0c',
+                        cardbg: '#121218',
+                        neon: '#00ffcc',
+                        neonblue: '#0099ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0c; color: #e2e8f0; }
+        .font-code { font-family: 'Fira Code', monospace; }
+        .glow-text { text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+        .glow-box { box-shadow: 0 0 20px rgba(0, 255, 204, 0.15); }
+        .glow-box:hover { box-shadow: 0 0 30px rgba(0, 255, 204, 0.35); }
+    </style>
+</head>
+<body class="bg-[#0a0a0c] text-slate-100 selection:bg-teal-500 selection:text-black">
+
+    <!-- First-Time Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+        <div class="bg-[#121218] border border-teal-500/30 p-8 rounded-2xl max-w-md w-full mx-4 glow-box">
+            <div class="text-center mb-6">
+                <span class="text-teal-400 font-code text-sm">// SECURE PORTFOLIO ACCESS</span>
+                <h2 class="text-2xl font-bold mt-2 text-white">Welcome Visitor</h2>
+                <p class="text-slate-400 text-sm mt-1">Please enter your contact info to unlock the portfolio experience.</p>
+            </div>
+            <form id="accessForm" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-code text-slate-400 mb-1">YOUR EMAIL OR PHONE</label>
+                    <input type="text" id="visitorContact" required placeholder="e.g., user@gmail.com or +91..." 
+                        class="w-full bg-[#0a0a0c] border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-400 transition">
+                </div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-teal-400 to-blue-500 text-black font-bold rounded-lg hover:opacity-90 transition shadow-lg shadow-teal-500/20">
+                    Access Portfolio &rarr;
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Wrapper (Hidden until login) -->
+    <div id="mainContent" class="hidden">
+        
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-40 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <a href="#" class="font-code text-xl font-bold text-teal-400 glow-text">&lt;Mehul.Kumar /&gt;</a>
+                <div class="hidden md:flex space-x-8 font-code text-sm text-slate-300">
+                    <a href="#about" class="hover:text-teal-400 transition">01. About</a>
+                    <a href="#skills" class="hover:text-teal-400 transition">02. Skills</a>
+                    <a href="#projects" class="hover:text-teal-400 transition">03. Projects</a>
+                    <a href="#contact" class="hover:text-teal-400 transition">04. Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 md:pt-44 md:pb-32 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 space-y-6">
+                <span class="font-code text-teal-400 bg-teal-500/10 px-3 py-1 rounded border border-teal-500/20">Hi, my name is</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white">Mehul Kumar.</h1>
+                <p class="text-xl md:text-2xl font-code text-slate-400">Computer Science Undergraduate & SDE.</p>
+                <p class="text-slate-400 max-w-xl leading-relaxed">
+                    LeetCode Knight rank (Top 4.12% globally) with strong expertise in Data Structures & Algorithms, Backend Engineering, and Database Architecture.
+                </p>
+                <div class="flex space-x-4 pt-4">
+                    <a href="#contact" class="px-6 py-3 bg-teal-400 text-black font-bold rounded-lg hover:bg-teal-300 transition">Get In Touch</a>
+                    <a href="#projects" class="px-6 py-3 border border-slate-700 rounded-lg hover:border-teal-400 transition font-code">View Work</a>
+                </div>
+            </div>
+            <!-- Profile Photo -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border border-slate-700 bg-[#121218]">
+                    <!-- Place your Full PP.png image file in the same directory -->
+                    <img src="Full PP.png" alt="Mehul Kumar" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80'">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800">
+            <h2 class="text-2xl md:text-3xl font-bold font-code mb-8 text-white"><span class="text-teal-400">01.</span> About Me</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-300 leading-relaxed">
+                <p>
+                    I am a Computer Science undergraduate at Jagannath University, Jaipur, with a deep passion for backend systems, scalable architecture, and algorithm optimization. My focus is on writing clean, high-performance, and maintainable code.
+                </p>
+                <p>
+                    As a LeetCode Knight, I consistently challenge myself with complex problem-solving. Beyond competitive programming, I specialize in building robust asynchronous APIs, containerized deployment pipelines, and efficient data processing tools.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section (Cleaned up as requested) -->
+        <section id="skills" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800">
+            <h2 class="text-2xl md:text-3xl font-bold font-code mb-8 text-white"><span class="text-teal-400">02.</span> Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 glow-box">
+                    <h3 class="font-code text-teal-400 mb-4 font-bold"><i class="fa-solid fa-code mr-2"></i> Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">C</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">C++</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">Python</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">SQL</span>
+                    </div>
+                </div>
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 glow-box">
+                    <h3 class="font-code text-teal-400 mb-4 font-bold"><i class="fa-solid fa-server mr-2"></i> Backend & DB</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">FastAPI</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">REST APIs</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">MongoDB</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">Docker</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">Pytest</span>
+                    </div>
+                </div>
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 glow-box">
+                    <h3 class="font-code text-teal-400 mb-4 font-bold"><i class="fa-solid fa-terminal mr-2"></i> Core & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">DSA</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">OOPs</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">DBMS</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">Git</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded text-sm font-code">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800">
+            <h2 class="text-2xl md:text-3xl font-bold font-code mb-8 text-white"><span class="text-teal-400">03.</span> Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 glow-box flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">AI-Powered Customer Support Backend</h3>
+                        <p class="text-slate-400 text-sm mb-4">Multi-agent REST API backend built with FastAPI, JWT authentication, MongoDB async driver, and comprehensive pytest test coverage.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-code text-xs text-teal-400">
+                        <span>FastAPI</span><span>MongoDB</span><span>Docker</span><span>Pytest</span>
+                    </div>
+                </div>
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 glow-box flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Real-Time Face Detection System</h3>
+                        <p class="text-slate-400 text-sm mb-4">Computer vision pipeline utilizing OpenCV Haar cascades on live webcam feeds with grayscale optimization and bounding box rendering.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-code text-xs text-teal-400">
+                        <span>Python</span><span>OpenCV</span><span>Computer Vision</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section with Formspree Integration & Resume Contact Info -->
+        <section id="contact" class="py-20 px-6 max-w-4xl mx-auto border-t border-slate-800">
+            <h2 class="text-2xl md:text-3xl font-bold font-code mb-4 text-white text-center"><span class="text-teal-400">04.</span> Get In Touch</h2>
+            <p class="text-slate-400 text-center mb-10">Feel free to reach out directly through email or drop a message below.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 flex items-center space-x-4">
+                    <div class="text-teal-400 text-2xl"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <div class="text-xs font-code text-slate-400">EMAIL</div>
+                        <a href="mailto:mehulkumar2k5@gmail.com" class="text-white hover:text-teal-400 font-medium">mehulkumar2k5@gmail.com</a>
+                    </div>
+                </div>
+                <div class="bg-[#121218] p-6 rounded-xl border border-slate-800 flex items-center space-x-4">
+                    <div class="text-teal-400 text-2xl"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <div class="text-xs font-code text-slate-400">PHONE</div>
+                        <a href="tel:+918434459653" class="text-white hover:text-teal-400 font-medium">+91-8434459653</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formspree Contact Form -->
+            <form action="https://formspree.io/f/your-form-id" method="POST" class="bg-[#121218] p-8 rounded-xl border border-slate-800 space-y-6 glow-box">
+                <div>
+                    <label class="block text-xs font-code text-slate-400 mb-2">YOUR NAME</label>
+                    <input type="text" name="name" required class="w-full bg-[#0a0a0c] border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-code text-slate-400 mb-2">YOUR EMAIL</label>
+                    <input type="email" name="email" required class="w-full bg-[#0a0a0c] border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-code text-slate-400 mb-2">MESSAGE</label>
+                    <textarea name="message" rows="4" required class="w-full bg-[#0a0a0c] border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-400"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-teal-400 text-black font-bold rounded-lg hover:bg-teal-300 transition shadow-lg shadow-teal-500/20">
+                    Send Message via Formspree
+                </button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center border-t border-slate-800 text-slate-500 text-sm font-code">
+            Designed & Built by Mehul Kumar &copy; 2026
+        </footer>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const contact = document.getElementById('visitorContact').value;
+            if (contact.trim() !== '') {
+                document.getElementById('loginModal').style.display = 'none';
+                document.getElementById('mainContent').classList.remove('hidden');
+                localStorage.setItem('portfolio_auth', contact);
+            }
+        }
+        window.onload = function() {
+            if (localStorage.getItem('portfolio_auth')) {
+                document.getElementById('loginModal').style.display = 'none';
+                document.getElementById('mainContent').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
